@@ -1,6 +1,5 @@
 #!/usr/bin/perl -swl
 use Data::Dumper;
-use FastaUtils qw(readFasta);
 
 my ($fastyoutput, $candidatesfa, $outputbase, $rhodopsinhmm, $threads, $speciescode) = @ARGV;
 #$rhodopsinblastdb,
