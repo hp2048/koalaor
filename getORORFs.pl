@@ -354,7 +354,27 @@ sub get_orinfo {
   #die Dumper \%aln_info if ($aln_info{'query_id'} eq "KN195678.1:245790-247744")
   return $aln_info{'Hits'}{1}{'hsp'}{1}{'ORcontigid'}, $aln_info{'Hits'}{1}{'hsp'}{1}{'ORstrand'}, $aln_info{'Hits'}{1}{'hsp'}{1}{'ORcontigstart'}, $aln_info{'Hits'}{1}{'hsp'}{1}{'ORcontigend'}, $aln_info{'Hits'}{1}{'hsp'}{1}{'ORCDS'}, $aln_info{'Hits'}{1}{'hsp'}{1}{'ORORF'};
 }
-  ####Debug to check if there are multiple stopcodons towards the end or begining of the sequence that are not justified
+
+sub readFasta {
+  my $file = shift;
+  my %s = ();
+  my $header = "";
+  open (F, "<$file") or die $!;
+  while (<F>){
+    chomp $_;
+    if ($_ =~ />(\S+)/){
+      $header = $1;
+    }
+    else {
+      $s{$header}{'sequence'} .= $_;
+    }
+  }
+  close F;
+  return \%s;
+}
+
+
+####Debug to check if there are multiple stopcodons towards the end or begining of the sequence that are not justified
   #if ($aln_info{'Hits'}{1}{'hsp'}{1}{'ORORF'} =~ tr/\*/\*/ > 1 && $aln_info{'Hits'}{1}{'hsp'}{1}{'ORORF'} !~ /[\\\/]/){
   #  print $$qseq{$aln_info{'query_id'}}{'sequence'};
   #  print Dumper \%aln_info;
