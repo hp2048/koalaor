@@ -1,6 +1,5 @@
 #!/usr/bin/perl -w
 use strict;
-use FastaUtils qw(readFasta);
 
 my $reffasta = shift;
 my $outfile  = shift;
@@ -33,3 +32,21 @@ close HMM;
 close OUT;
 
 exit;
+
+sub readFasta {
+  my $file = shift;
+  my %s = ();
+  my $header = "";
+  open (F, "<$file") or die $!;
+  while (<F>){
+    chomp $_;
+    if ($_ =~ />(\S+)/){
+      $header = $1;
+    }
+    else {
+      $s{$header}{'sequence'} .= $_;
+    }
+  }
+  close F;
+  return \%s;
+}
