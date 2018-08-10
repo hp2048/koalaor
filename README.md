@@ -2,8 +2,8 @@
 Code and data in this repository were used to identify OR genes in the koala genome.
 
 # Requirements
-1. [HMMER](http://hmmer.org/)
-2. [FASTA Package](https://github.com/wrpearson/fasta36)  for obtaining conceptual translations of OR genes
+1. [HMMER](http://hmmer.org/) for scanning genome sequence to find OR candidates (nhmmer) and removing false positives by scanning GPCR Class A (Rhodopsin like) HMM database (hmmscan). Please have `nhmmer` and `hmmscan` binaries in the PATH. 
+2. [FASTA Package](https://github.com/wrpearson/fasta36)  for obtaining conceptual translations of OR genes. Please have `fasty36` in the PATH.
 3. [MCL algorithm](https://micans.org/mcl/) to identify clusters of similar OR genes. This was used to select reference OR genes to construct HMM. This is not required to detect OR genes in a genome.
 
 # Overview of the pipeline
