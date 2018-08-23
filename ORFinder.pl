@@ -59,7 +59,7 @@ sub configure {
     $config->{'reffasta'} = abs_path($config->{'reffasta'});
     if ($config->{'reffasta'} =~ /\.gz$/){
       my $reffasta_base = basename($config->{'reffasta'}, ".gz");
-      runcommand("gunzip -c $config->{'reffasta'} | head -n 5000000 > $config->{'outputdir'}$reffasta_base");
+      runcommand("gunzip -c $config->{'reffasta'} > $config->{'outputdir'}$reffasta_base");
       $config->{'reffasta'} = "$config->{'outputdir'}$reffasta_base";
     }
   }
