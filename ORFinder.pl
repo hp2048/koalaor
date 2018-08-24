@@ -15,7 +15,7 @@ runcommand("nhmmer --cpu $config->{'threads'} -o /dev/null --tblout $config->{'o
 ##process nhmmer output
 &processnhmmer;
 ##run fasty36 for conceptual translation
-runcommand("fasty36 -b 1 -z 11 -Q -d 1 -m \"F10 $config->{'outputbase'}.OR.candidates.fasty.output\" $config->{'outputbase'}.OR.candidates.fa $config->{'orrefaafa'} >/dev/null");
+runcommand("fasty36 -T $config->{'threads'} -b 1 -z 11 -Q -d 1 -m \"F10 $config->{'outputbase'}.OR.candidates.fasty.output\" $config->{'outputbase'}.OR.candidates.fa $config->{'orrefaafa'} >/dev/null");
 ##process fasty output
 &processfasty;
 ##unzip rhodopsin_class_a hmm
