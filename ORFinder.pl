@@ -45,13 +45,13 @@ sub configure {
 	$config->{geneticcode}  = getgeneticcode();
 	$config->{rhodopsinhmm} = abs_path(dirname(__FILE__)."/referencedata/class_a_rhodopsin_family.aa.hmm");
 
-  if ($config->{'outputdir'} && ! -e $config->{'outputdir'}) {
+  if ($config->{'outputdir'}) {
     runcommand("mkdir -p $config->{'outputdir'}");
     $config->{'outputdir'} = abs_path($config->{'outputdir'});
     $config->{'outputdir'} .= "/" unless ($config->{'outputdir'} =~ /\/$/);
   }
   else {
-    print "\nERROR: Provide output directory path and ensure that it doesn't exist.";
+    print "\nERROR: Provide output directory path.";
     usage(1);
   }
 
@@ -463,8 +463,8 @@ Options:
                  NOTE: If your species code is not available then make
                  one using genus and species name. e.g. Xenopus tropicalis
                  code is XENTR. Don't include any spaces in the code.
-	-outputdir     Path to output directory. It will be created by
-	               the program. Program WILL NOT overwrite.
+  -outputdir     Path to output directory. It will be created by
+                 the program.
   -threads       number of threads to use (default = 1)
 USAGEMSG
 	exit($exit_code);
