@@ -5,7 +5,9 @@ Code and data in this repository were used to identify OR genes in the koala gen
 
 NOTE: This code is specific to vertebrate OR genes. You can run it on non-vertebrates but you will get gibberish output.
 
+```
 perl koalaor/ORFinder.pl -reffasta /path/to/genome.fasta(.gz) -speciescode HUMAN -outputdir /path/to/output/directory -threads 6
+```
 
 - Five letter species code can be identified from https://www.uniprot.org/docs/speclist. Use this code when possible.
 - Genome assembly file needs to be in fasta format. Program can use .gz compressed file.
