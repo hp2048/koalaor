@@ -1,6 +1,18 @@
 # koalaor
 Code and data in this repository were used to identify OR genes in the koala genome.
 
+# How to detect olfactory receptor genes in your genome
+
+NOTE: This code is specific to vertebrate OR genes. You can run it on non-vertebrates but you will get gibberish output.
+
+perl koalaor/ORFinder.pl -reffasta /path/to/genome.fasta(.gz) -speciescode HUMAN -outputdir /path/to/output/directory -threads 6
+
+- Five letter species code can be identified from https://www.uniprot.org/docs/speclist. Use this code when possible.
+- Genome assembly file needs to be in fasta format. Program can use .gz compressed file.
+- All results will be dumped into the output directory.
+- I haven't performed extensive testing for performance. I have used anywhere between 6 and 12 threads (mostly used for running nhmmer, hmmscan and fasty36).
+- You will need nhmmer, fasty36, and hmmscan binaries available in your PATH.
+
 # Requirements
 1. [HMMER](http://hmmer.org/) for scanning genome sequence to find OR candidates (nhmmer) and removing false positives by scanning GPCR Class A (Rhodopsin like) HMM database (hmmscan). Please have `nhmmer` and `hmmscan` binaries in the PATH. 
 2. [FASTA Package](https://github.com/wrpearson/fasta36)  for obtaining conceptual translations of OR genes. Please have `fasty36` in the PATH.
